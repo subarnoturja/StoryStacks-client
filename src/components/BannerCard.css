@@ -1,9 +1,9 @@
-.swiper {
+.banner .swiper {
     width: 240px;
     height: 320px;
   }
   
-  .swiper-slide {
+  .banner .swiper-slide {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -13,23 +13,23 @@
     color: #fff;
   }
   
-  .swiper-slide:nth-child(1n) {
+  .banner  .swiper-slide:nth-child(1n) {
     background-image: url('../assets/book1.png');
   }
   
-  .swiper-slide:nth-child(2n) {
+  .banner  .swiper-slide:nth-child(2n) {
     background-image: url('../assets/book2.png');
   }
   
-  .swiper-slide:nth-child(3n) {
+  .banner  .swiper-slide:nth-child(3n) {
     background-image: url('../assets/book3.png');
   }
   
-  .swiper-slide:nth-child(4n) {
+  .banner  .swiper-slide:nth-child(4n) {
     background-image: url('../assets/book4.png');
   }
   
-  .swiper-slide:nth-child(5n) {
+  .banner  .swiper-slide:nth-child(5n) {
     background-image: url('../assets/book5.png');
   }
   

@@ -3,7 +3,7 @@ import BannerCard from "./BannerCard";
 const Banner = () => {
     return (
         <div className="mb-10">
-           <div className="flex flex-col md:flex-row justify-around items-center py-28 bg-blue-500/20 rounded-xl w-full">
+           <div className="flex flex-col md:flex-row justify-around items-center py-28 gap-24 bg-blue-500/20 rounded-xl w-full">
             {/* Left Side */}
             <div className="md:w-1/2 space-y-8 h-full">
                 <h2 className="text-5xl font-bold leading-snug text-black">Turn the Page, Start the <span className="text-blue-700">Adventure</span></h2>

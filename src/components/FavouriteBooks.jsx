@@ -4,10 +4,11 @@ import BookCards from "./BookCards";
 
 const FavouriteBooks = () => {
     const [books, setBooks] = useState([])
+
     useEffect(() => {
         fetch('http://localhost:5000/all-books')
         .then(res => res.json())
-        .then(data => console.log(data))
+        .then(data => setBooks(data))
     } , [])
     return (
         <div>
