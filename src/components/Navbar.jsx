@@ -48,7 +48,7 @@ const Navbar = () => {
   return (
     <div className="mb-24">
       <div
-        className={`navbar fixed top-0 z-50 w-full transition-all duration-300 ${
+        className={`navbar rounded-full fixed top-0 z-50 w-full transition-all duration-300 ${
           isScrolled ? "bg-blue-600/10 backdrop-blur-lg  shadow-lg" : "bg-transparent"
         }`}
       >
@@ -84,10 +84,10 @@ const Navbar = () => {
         </div>
         <div className="navbar-end gap-4">
           <div>
-            <Link className="btn btn-outline btn-info">Sign In</Link>
+            <Link className="btn lg:btn-outline btn-info rounded-full">Sign In</Link>
           </div>
           <div>
-            <Link className="btn btn-info">Sign Up</Link>
+            <Link className="hidden lg:btn lg:btn-info lg:rounded-full">Sign Up</Link>
           </div>
         </div>
       </div>
