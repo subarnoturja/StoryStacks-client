@@ -3,7 +3,7 @@
 const UploadBook = () => {
     return (
         <div>
-            
+           UploadBook 
         </div>
     );
 };
