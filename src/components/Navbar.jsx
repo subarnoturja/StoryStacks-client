@@ -84,10 +84,10 @@ const Navbar = () => {
         </div>
         <div className="navbar-end gap-4">
           <div>
-            <Link className="btn lg:btn-outline btn-info rounded-full">Sign In</Link>
+            <Link to='/sign-up' className="btn lg:btn-outline btn-info rounded-full">Sign Up</Link>
           </div>
           <div>
-            <Link className="hidden lg:btn lg:btn-info lg:rounded-full">Sign Up</Link>
+            <Link className="hidden lg:btn lg:btn-info lg:rounded-full">Sign In</Link>
           </div>
         </div>
       </div>

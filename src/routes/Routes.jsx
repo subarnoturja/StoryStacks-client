@@ -8,6 +8,7 @@ import Dashboard from "../dashboard/Dashboard";
 import UploadBook from "../dashboard/UploadBook";
 import ManageBooks from "../dashboard/ManageBooks";
 import EditBooks from "../dashboard/EditBooks";
+import Signup from "../pages/Signup";
 
 export const router = createBrowserRouter([
     {
@@ -26,6 +27,10 @@ export const router = createBrowserRouter([
             {
                 path: '/shop',
                 element: <Shop></Shop>,
+            },
+            {
+                path: '/sign-up',
+                element: <Signup></Signup>,
             }
         ]
     },
