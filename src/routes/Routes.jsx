@@ -3,6 +3,9 @@ import MainLayout from "../MainLayout/MainLayout";
 import Home from "../pages/Home";
 import SingleBook from "../Shop/SingleBook";
 import Shop from "../pages/Shop";
+import DashboardLayout from "../dashboard/DashboardLayout";
+import Dashboard from "../dashboard/Dashboard";
+import UploadBook from "../dashboard/UploadBook";
 
 export const router = createBrowserRouter([
     {
@@ -21,6 +24,20 @@ export const router = createBrowserRouter([
             {
                 path: '/shop',
                 element: <Shop></Shop>,
+            }
+        ]
+    },
+    {
+        path: '/admin/dashboard',
+        element: <DashboardLayout></DashboardLayout>,
+        children: [
+            {
+                path: '/admin/dashboard',
+                element: <Dashboard></Dashboard>,
+            },
+            {
+                path: '/admin/dashboard/upload',
+                element: <UploadBook></UploadBook>,
             }
         ]
     }
