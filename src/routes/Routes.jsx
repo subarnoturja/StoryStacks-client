@@ -9,6 +9,8 @@ import UploadBook from "../dashboard/UploadBook";
 import ManageBooks from "../dashboard/ManageBooks";
 import EditBooks from "../dashboard/EditBooks";
 import Signup from "../pages/Signup";
+import Login from "../pages/Login";
+import PrivateRoute from "./PrivateRoute";
 
 export const router = createBrowserRouter([
     {
@@ -31,6 +33,10 @@ export const router = createBrowserRouter([
             {
                 path: '/sign-up',
                 element: <Signup></Signup>,
+            },
+            {
+                path: '/login',
+                element: <Login></Login>,
             }
         ]
     },
@@ -40,7 +46,7 @@ export const router = createBrowserRouter([
         children: [
             {
                 path: '/admin/dashboard',
-                element: <Dashboard></Dashboard>,
+                element: <PrivateRoute><Dashboard></Dashboard></PrivateRoute>,
             },
             {
                 path: '/admin/dashboard/upload',

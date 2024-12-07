@@ -117,7 +117,7 @@ const Signup = () => {
               Sign in
             </button>
             <p className="text-sm text-center mt-6">
-              Don't have an account{" "}
+              New in have?{" "}
               <Link
                 href="javascript:void(0);"
                 className="text-blue-600 font-semibold hover:underline ml-1 whitespace-nowrap"
