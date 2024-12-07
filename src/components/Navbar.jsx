@@ -1,8 +1,22 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../authProvider/AuthProvider";
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
+
+  const { user, userLogout } = useContext(AuthContext);
+
+  // Logout Handling
+  const handleSignOut = () => {
+    userLogout()
+      .then((result) => {
+        console.log(result.user);
+      })
+      .catch((error) => {
+        console.log(error.message);
+      });
+  };
 
   useEffect(() => {
     const handleScroll = () => {
@@ -83,12 +97,18 @@ const Navbar = () => {
           <ul className="menu menu-horizontal px-1">{navlinks}</ul>
         </div>
         <div className="navbar-end gap-4">
-          <div>
+          {
+            user ? <>
+            <button onClick={handleSignOut} className="btn lg:btn-outline btn-info rounded-full">logout</button>
+            </> : <>
+            <div>
             <Link to='/sign-up' className="btn lg:btn-outline btn-info rounded-full">Sign Up</Link>
           </div>
           <div>
             <Link className="hidden lg:btn lg:btn-info lg:rounded-full">Sign In</Link>
           </div>
+            </>
+          }
         </div>
       </div>
     </div>
