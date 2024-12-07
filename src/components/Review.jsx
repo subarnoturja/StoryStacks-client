@@ -39,7 +39,7 @@ const Review = () => {
             <img
               src={profile1}
               alt=""
-              className="w-16 h-16 mb-2 -mt-16 bg-center bg-cover rounded-full dark:bg-gray-500 dark:bg-gray-300"
+              className="w-16 h-16 mb-2 -mt-16 bg-center bg-cover rounded-full dark:bg-gray-300"
             />
             <p className="text-xl font-semibold leading-tight">
             Emily Carter
@@ -75,7 +75,7 @@ const Review = () => {
             <img
               src={profile2}
               alt=""
-              className="w-16 h-16 mb-2 -mt-16 bg-center bg-cover rounded-full dark:bg-gray-500 dark:bg-gray-300"
+              className="w-16 h-16 mb-2 -mt-16 bg-center bg-cover rounded-full dark:bg-gray-300"
             />
             <p className="text-xl font-semibold leading-tight">
             David Reynolds
@@ -111,7 +111,7 @@ const Review = () => {
             <img
               src={profile3}
               alt=""
-              className="w-16 h-16 mb-2 -mt-16 bg-center bg-cover rounded-full dark:bg-gray-500 dark:bg-gray-300"
+              className="w-16 h-16 mb-2 -mt-16 bg-center bg-cover rounded-full dark:bg-gray-300"
             />
             <p className="text-xl font-semibold leading-tight">
             Priya Singh
