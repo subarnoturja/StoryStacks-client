@@ -1,11 +1,189 @@
-
+import { useState } from "react";
+import { useLoaderData, useParams } from "react-router-dom";
+import Swal from "sweetalert2";
 
 const EditBooks = () => {
-    return (
-        <div>
-            
+  const { id } = useParams();
+  const {
+    bookTitle,
+    authorName,
+    imageURL,
+    category,
+    bookDescription,
+  } = useLoaderData();
+
+  const bookCategories = [
+    "Fiction",
+    "Non-Fiction",
+    "Mistery",
+    "Programming",
+    "Science Fiction",
+    "Fantasy",
+    "Horror",
+    "Bibliography",
+    "Autobiography",
+    "History",
+    "Self-help",
+    "Memoir",
+    "Business",
+    "Children Books",
+    "Travel",
+    "Religion",
+    "Art and Design",
+  ];
+
+  const [selectedBookCategory, setSelectedBookCategory] = useState(
+    bookCategories[0]
+  );
+
+  // Handle Category
+  const handleChangeSelectedValue = (event) => {
+    setSelectedBookCategory(event.target.value);
+  };
+
+  // Handle Book Submission
+  const handleUpdate = (event) => {
+    event.preventDefault();
+    const form = event.target;
+    const bookTitle = form.bookTitle.value;
+    const authorName = form.authorName.value;
+    const imageURL = form.imageURL.value;
+    const category = form.categoryName.value;
+    const bookDescription = form.bookDescription.value;
+    const bookPDFURL = form.bookPDFURL.value;
+
+    const updatedBookObject = {
+      bookTitle,
+      authorName,
+      imageURL,
+      category,
+      bookDescription,
+      bookPDFURL,
+    };
+    // console.log(bookObject);
+
+    // Update Book Data
+    fetch(`http://localhost:5000/book/${id}`, {
+        method: "PATCH",
+        headers: {
+            "content-type": "application/json"
+        },
+        body: JSON.stringify(updatedBookObject)
+    })
+    .then(res => res.json())
+        .then(data => {
+            Swal.fire({
+                position: "center",
+                icon: "success",
+                title: "Book Updated Successfully",
+                showConfirmButton: false,
+                timer: 1500
+              });
+        })
+    
+  };
+
+  return (
+    <div className="px-4 my-12">
+      <h2 className="mb-8 text-3xl font-bold">Update Book Data</h2>
+
+      <form
+        onSubmit={handleUpdate}
+        className="flex lg:w-[1180px] flex-col flex-wrap gap-4"
+      >
+        <div className="grid sm:grid-cols-2 gap-10">
+          <div className="relative flex items-center">
+            <label className="text-[13px] bg-white text-black absolute px-2 top-[-10px] left-[18px]">
+              Book Title
+            </label>
+            <input
+              type="text"
+              placeholder="Enter Book Title"
+              name="bookTitle"
+              defaultValue={bookTitle}
+              className="px-4 py-3.5 bg-white text-black w-full text-sm border-2 border-gray-100 focus:border-blue-500 rounded outline-none"
+            />
+          </div>
+
+          <div className="relative flex items-center">
+            <label className="text-[13px] bg-white text-black absolute px-2 top-[-10px] left-[18px]">
+              Author Name
+            </label>
+            <input
+              type="text"
+              placeholder="Enter Author Name"
+              name="authorName"
+              defaultValue={authorName}
+              className="px-4 py-3.5 bg-white text-black w-full text-sm border-2 border-gray-100 focus:border-blue-500 rounded outline-none"
+            />
+          </div>
+
+          <div className="relative flex items-center">
+            <label className="text-[13px] bg-white text-black absolute px-2 top-[-10px] left-[18px]">
+              Book Image
+            </label>
+            <input
+              type="text"
+              placeholder="Book Image URL"
+              name="imageURL"
+              defaultValue={imageURL}
+              className="px-4 py-3.5 bg-white text-black w-full text-sm border-2 border-gray-100 focus:border-blue-500 rounded outline-none"
+            />
+          </div>
+
+          <div className="relative flex items-center">
+            <label className="text-[13px] bg-white text-black absolute px-2 top-[-10px] left-[18px]">
+              Category
+            </label>
+            <select
+              name="categoryName"
+              defaultValue={category}
+              className="px-4 py-3.5 bg-white text-black w-full text-sm border-2 border-gray-100 focus:border-blue-500 rounded outline-none"
+              onChange={handleChangeSelectedValue}
+            >
+              {bookCategories.map((option) => (
+                <option key={option} value={option}>
+                  {option}
+                </option>
+              ))}
+            </select>
+          </div>
+
+          <div className="relative flex items-center sm:col-span-2">
+            <label className="text-[13px] bg-white text-black absolute px-2 top-[-10px] left-[18px]">
+              Book Description
+            </label>
+            <textarea
+              type="text"
+              placeholder="Write your Book Description"
+              name="bookDescription"
+              defaultValue={bookDescription}
+              className="px-4 py-3.5 bg-white text-black w-full text-sm border-2 border-gray-100 focus:border-blue-500 rounded outline-none"
+            />
+          </div>
+
+          <div className="relative flex items-center sm:col-span-2">
+            <label className="text-[13px] bg-white text-black absolute px-2 top-[-10px] left-[18px]">
+              Book PDF URL
+            </label>
+            <input
+              type="text"
+              placeholder="Book pdf url"
+              name="bookPDFURL"
+              className="px-4 py-3.5 bg-white text-black w-full text-sm border-2 border-gray-100 focus:border-blue-500 rounded outline-none"
+            />
+          </div>
         </div>
-    );
+
+        <button
+          type="submit"
+          className="btn mt-8 px-6 py-2.5 w-full text-sm bg-blue-500/80 text-white rounded hover:bg-blue-600 transition-all"
+        >
+          Update
+        </button>
+      </form>
+    </div>
+  );
 };
 
 export default EditBooks;
