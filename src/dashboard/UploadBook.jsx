@@ -1,4 +1,5 @@
 import { useState } from "react";
+import Swal from "sweetalert2";
 
 
 const UploadBook = () => {
@@ -44,6 +45,26 @@ const UploadBook = () => {
             bookTitle, authorName, imageURL, category, bookDescription, bookPDFURL
         }
         console.log(bookObject);
+
+        // Send Book Data to DataBase
+        fetch('http://localhost:5000/upload-book', {
+            method: "POST",
+            headers: {
+                "content-type": "application/json",
+            },
+            body: JSON.stringify(bookObject)
+        })
+        .then(res => res.json())
+        .then(data => {
+            Swal.fire({
+                position: "center",
+                icon: "success",
+                title: "Book Uploaded Successfully",
+                showConfirmButton: false,
+                timer: 1500
+              });
+            form.reset();
+        })
     }
 
   return (
