@@ -1,11 +1,11 @@
 import Banner from "../components/Banner";
-import FavouriteBooks from "../components/FavouriteBooks";
+import BestSellerBooks from "../components/BestSellerBooks";
 
 const Home = () => {
     return (
         <div>
            <Banner></Banner>
-           <FavouriteBooks></FavouriteBooks>
+           <BestSellerBooks />
         </div>
     );
 };

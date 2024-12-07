@@ -17,7 +17,7 @@ const BookCards = ({ headline, books }) => {
     <div className="my-16 px-4 lg:px-24">
       <h2 className="text-4xl text-center font-bold text-black mb-8">{headline}</h2>
       {/* cards */}
-      <div>
+      <div className='mt-12'>
       <Swiper
         slidesPerView={1}
         spaceBetween={10}
@@ -43,11 +43,11 @@ const BookCards = ({ headline, books }) => {
           },
         }}
         modules={[Pagination]}
-        className="mySwiper w-full h-full"
+        className="mySwiper w-full h-full mb-10"
       >
         {
             books.map(book => <SwiperSlide key={book._id}>
-                    <Link to='/'>
+                    <Link to={`/book/${book._id}`}>
                         <div className='relative'>
                             <img src={book.imageURL} alt="" />
                             <div className='absolute top-3 right-3 bg-blue-500 hover:bg-black p-2 rounded'>
