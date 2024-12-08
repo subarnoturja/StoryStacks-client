@@ -79,7 +79,7 @@ const BookCards = ({ headline, books }) => {
                     <div className="space-x-2 text-sm dark:text-gray-600">
                       <span>{book.authorName}</span>
                     </div>
-                    <button className="btn w-full mt-4 bg-blue-600/50 text-black font-semibold hover:text-blue-700">View</button>
+                    <button className="btn w-full mt-4 bg-blue-600/50 text-black hover:text-blue-700">View</button>
                   </div>
                 </article>
               </Link>

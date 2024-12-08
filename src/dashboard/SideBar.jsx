@@ -10,9 +10,9 @@ import { AiOutlineProduct } from "react-icons/ai";
 import { Link } from "react-router-dom";
 import { useContext } from "react";
 import { AuthContext } from "../authProvider/AuthProvider";
+import { GoHome } from "react-icons/go";
 
 const Sidebar = () => {
-
   const { user, userLogout } = useContext(AuthContext);
 
   // Logout Handling
@@ -52,25 +52,25 @@ const Sidebar = () => {
             </Link>
           </li>
           <li>
-            <Link to='/admin/dashboard/upload'>
-            <a
-              rel="noopener noreferrer"
-              className="flex items-center p-2 space-x-3 rounded-md"
-            >
-              <MdOutlineDriveFolderUpload size={24} />
-              <span>Upload Books</span>
-            </a>
+            <Link to="/admin/dashboard/upload">
+              <a
+                rel="noopener noreferrer"
+                className="flex items-center p-2 space-x-3 rounded-md"
+              >
+                <MdOutlineDriveFolderUpload size={24} />
+                <span>Upload Books</span>
+              </a>
             </Link>
           </li>
           <li>
             <Link to="/admin/dashboard/manage">
-            <a
-              rel="noopener noreferrer"
-              className="flex items-center p-2 space-x-3 rounded-md"
-            >
-              <MdOutlineManageHistory size={24} />
-              <span>Manage Books</span>
-            </a>
+              <a
+                rel="noopener noreferrer"
+                className="flex items-center p-2 space-x-3 rounded-md"
+              >
+                <MdOutlineManageHistory size={24} />
+                <span>Manage Books</span>
+              </a>
             </Link>
           </li>
           <li>
@@ -95,9 +95,17 @@ const Sidebar = () => {
           </li>
         </ul>
         <ul className="pt-4 pb-2 space-y-1 text-sm">
-          
+          <Link to='/'>
+            <li>
+              <button className="flex items-center p-2 space-x-3 rounded-md">
+                <GoHome size={26} />
+                <span>Home</span>
+              </button>
+            </li>
+          </Link>
           <li>
-            <button onClick={handleSignOut}
+            <button
+              onClick={handleSignOut}
               className="flex items-center p-2 space-x-3 rounded-md"
             >
               <MdOutlineLogout size={26} />

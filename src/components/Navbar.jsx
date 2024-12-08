@@ -60,10 +60,12 @@ const Navbar = () => {
   );
 
   return (
-    <div className="mb-24">
+    <div className="lg:mb-32 container">
       <div
         className={`navbar rounded-full fixed top-0 z-50 w-full transition-all duration-300 ${
-          isScrolled ? "bg-blue-600/10 backdrop-blur-lg  shadow-lg" : "bg-transparent"
+          isScrolled
+            ? "bg-blue-600/10 backdrop-blur-lg  shadow-lg"
+            : "bg-transparent"
         }`}
       >
         <div className="navbar-start">
@@ -91,24 +93,41 @@ const Navbar = () => {
               {navlinks}
             </ul>
           </div>
-          <Link to='/' className="btn btn-ghost text-xl">StoryStacks</Link>
+          <a className="btn btn-ghost text-xl">StoryStacks</a>
         </div>
         <div className="navbar-center hidden lg:flex">
           <ul className="menu menu-horizontal px-1">{navlinks}</ul>
         </div>
         <div className="navbar-end gap-4">
-          {
-            user ? <>
-            <button onClick={handleSignOut} className="btn lg:btn-outline btn-info rounded-full">logout</button>
-            </> : <>
-            <div>
-            <Link to='/login' className="btn lg:btn-outline btn-info rounded-full">Sign In</Link>
-          </div>
-          <div>
-            <Link to='/sign-up' className="hidden lg:btn lg:btn-info lg:rounded-full">Sign Up</Link>
-          </div>
+          {user ? (
+            <>
+              <button
+                onClick={handleSignOut}
+                className="btn lg:btn-outline btn-info rounded-full"
+              >
+                logout
+              </button>
             </>
-          }
+          ) : (
+            <>
+              <div>
+                <Link
+                  to="/login"
+                  className="btn lg:btn-outline btn-info rounded-full"
+                >
+                  Sign In
+                </Link>
+              </div>
+              <div>
+                <Link
+                  to="/sign-up"
+                  className="hidden lg:btn lg:btn-info lg:rounded-full"
+                >
+                  Sign Up
+                </Link>
+              </div>
+            </>
+          )}
         </div>
       </div>
     </div>
