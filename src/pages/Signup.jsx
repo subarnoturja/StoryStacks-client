@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { Link, useLocation, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { AuthContext } from "../authProvider/AuthProvider";
 import { Bounce, toast } from "react-toastify";
 
@@ -15,6 +15,7 @@ const Signup = () => {
 
         createUser(email, password)
         .then(result => {
+          console.log(result.user)
             toast.success("Registration Successful", {
                 position: "top-right",
                 autoClose: 5000,

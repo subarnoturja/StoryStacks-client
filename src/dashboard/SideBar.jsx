@@ -9,8 +9,24 @@ import { FiUserCheck } from "react-icons/fi";
 import { AiOutlineProduct } from "react-icons/ai";
 import { IoSettingsOutline } from "react-icons/io5";
 import { Link } from "react-router-dom";
+import { useContext } from "react";
+import { AuthContext } from "../authProvider/AuthProvider";
 
 const Sidebar = () => {
+
+  const { userLogout } = useContext(AuthContext);
+
+  // Logout Handling
+  const handleSignOut = () => {
+    userLogout()
+      .then((result) => {
+        console.log(result.user);
+      })
+      .catch((error) => {
+        console.log(error.message);
+      });
+  };
+
   return (
     <div className="h-full p-3 space-y-2 w-60 dark:bg-gray-50 dark:text-gray-800">
       <div className="flex items-center p-2 space-x-4">
@@ -83,25 +99,14 @@ const Sidebar = () => {
           </li>
         </ul>
         <ul className="pt-4 pb-2 space-y-1 text-sm">
+          
           <li>
-            <a
-              rel="noopener noreferrer"
-              href="#"
-              className="flex items-center p-2 space-x-3 rounded-md"
-            >
-              <IoSettingsOutline size={26} />
-              <span>Settings</span>
-            </a>
-          </li>
-          <li>
-            <a
-              rel="noopener noreferrer"
-              href="/logout"
+            <button onClick={handleSignOut}
               className="flex items-center p-2 space-x-3 rounded-md"
             >
               <MdOutlineLogout size={26} />
               <span>Logout</span>
-            </a>
+            </button>
           </li>
         </ul>
       </div>
