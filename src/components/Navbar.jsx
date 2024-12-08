@@ -102,10 +102,10 @@ const Navbar = () => {
             <button onClick={handleSignOut} className="btn lg:btn-outline btn-info rounded-full">logout</button>
             </> : <>
             <div>
-            <Link to='/sign-up' className="btn lg:btn-outline btn-info rounded-full">Sign Up</Link>
+            <Link to='/login' className="btn lg:btn-outline btn-info rounded-full">Sign In</Link>
           </div>
           <div>
-            <Link className="hidden lg:btn lg:btn-info lg:rounded-full">Sign In</Link>
+            <Link to='/sign-up' className="hidden lg:btn lg:btn-info lg:rounded-full">Sign Up</Link>
           </div>
             </>
           }

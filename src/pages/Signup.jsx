@@ -1,18 +1,11 @@
 import { useContext } from "react";
-import { AiOutlineMail } from "react-icons/ai";
-import { IoEyeOutline } from "react-icons/io5";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../authProvider/AuthProvider";
 import { Bounce, toast } from "react-toastify";
-import { FcGoogle } from "react-icons/fc";
 
 const Signup = () => {
 
-    const { setUser, createUser, googleLogin } = useContext(AuthContext)
-    const location = useLocation()
-    const navigate = useNavigate();
-
-    const from = location.state?.from?.pathname || '/'
+    const { createUser } = useContext(AuthContext)
 
     const handleSignUp = (event) => { 
         event.preventDefault();
@@ -22,7 +15,6 @@ const Signup = () => {
 
         createUser(email, password)
         .then(result => {
-            console.log(result.user);
             toast.success("Registration Successful", {
                 position: "top-right",
                 autoClose: 5000,
@@ -34,7 +26,6 @@ const Signup = () => {
                 theme: "light",
                 transition: Bounce,
               });
-              navigate(from, { replace: true })
         })
         .catch((error) => {
             console.log(error.message);
@@ -51,91 +42,43 @@ const Signup = () => {
             });
         }); 
     }
-    // Google Login
-    const handleGoogleLogin = () => {
-        googleLogin().then((result) => {
-          setUser(result.user);
-          navigate(from, { replace: true })
-          toast.success("Sign Up Successful", {
-            position: "top-right",
-            autoClose: 5000,
-            hideProgressBar: false,
-            closeOnClick: true,
-            pauseOnHover: true,
-            draggable: true,
-            progress: undefined,
-            theme: "light",
-            transition: Bounce,
-          });
-        });
-      };
 
   return (
-    <div className="flex justify-center items-center bg-gray-100 font-[sans-serif] h-full md:min-h-screen p-4">
-      <div className="grid justify-center max-w-md mx-auto">
-        <div>
-          <img
-            src="https://readymadeui.com/login-image.webp"
-            className="w-full object-cover rounded-2xl"
-            alt="login-image"
-          />
-        </div>
-
-        <form onSubmit={handleSignUp} className="bg-white rounded-2xl p-6 -mt-24 relative z-10 shadow-[0_2px_16px_-3px_rgba(6,81,237,0.3)]">
-          <div className="mb-12">
-            <h3 className="text-3xl font-extrabold text-blue-600">Sign up</h3>
-          </div>
-
-          <div className="relative flex items-center">
-            <input
-              name="email"
-              type="text"
-              required
-              className="w-full text-gray-800 text-sm border-b border-gray-300 focus:border-blue-600 px-2 py-3 outline-none"
-              placeholder="Enter email"
-            />
-            <AiOutlineMail size={22} />
-          </div>
-
-          <div className="mt-6">
-            <div className="relative flex items-center">
-              <input
-                name="password"
-                type="password"
-                required
-                className="w-full text-gray-800 text-sm border-b border-gray-300 focus:border-blue-600 px-2 py-3 outline-none"
-                placeholder="Enter password"
-              />
-              <IoEyeOutline size={22} />
+    <div className="font-[sans-serif]">
+      <div className="min-h-screen flex fle-col items-center justify-center p-6">
+        <div className="grid lg:grid-cols-2 items-center gap-6 max-w-7xl max-lg:max-w-xl w-full">
+          <form onSubmit={handleSignUp} className="lg:max-w-md w-full">
+            <h3 className="text-gray-800 text-3xl font-extrabold mb-12">Sign Up</h3>
+            <div className="space-y-6">
+              <div>
+                <label className="text-gray-800 text-sm mb-2 block">Name</label>
+                <input name="name" type="text" className="bg-gray-100 w-full text-gray-800 text-sm px-4 py-4 focus:bg-transparent outline-blue-500 transition-all" placeholder="Enter name" />
+              </div>
+              <div>
+                <label className="text-gray-800 text-sm mb-2 block">Email</label>
+                <input name="email" type="text" className="bg-gray-100 w-full text-gray-800 text-sm px-4 py-4 focus:bg-transparent outline-blue-500 transition-all" placeholder="Enter email" />
+              </div>
+              <div>
+                <label className="text-gray-800 text-sm mb-2 block">Password</label>
+                <input name="password" type="password" className="bg-gray-100 w-full text-gray-800 text-sm px-4 py-4 focus:bg-transparent outline-blue-500 transition-all" placeholder="Enter password" />
+              </div>
             </div>
-          </div>
-          <div className="mt-12">
+
+            <div className="mt-12">
             <button
-              type="button"
-              className="w-full py-2.5 px-4 text-sm font-semibold tracking-wider rounded-md text-white bg-blue-600 hover:bg-blue-700 focus:outline-none"
+              type="submit"
+              className="btn w-full py-2.5 px-4 text-lg font-semibold tracking-wider rounded-md text-white bg-blue-600 hover:bg-blue-700 focus:outline-none"
             >
-              Sign in
+              Sign Up
             </button>
-            <p className="text-sm text-center mt-6">
-              New in have?{" "}
-              <Link
-                href="javascript:void(0);"
-                className="text-blue-600 font-semibold hover:underline ml-1 whitespace-nowrap"
-              >
-                Register here
-              </Link>
-            </p>
-          </div>
+            </div>
+            <p className="text-sm text-gray-800 mt-6">Already have an account? <Link to='/login' className="text-blue-600 font-semibold hover:underline ml-1">Login here</Link></p>
+          </form>
 
-          <hr className="my-6 border-gray-300" />
-
-          <div className="space-x-6 flex justify-center">
-            <button onClick={handleGoogleLogin} className="btn border w-full border-none outline-none">
-            <FcGoogle className="text-4xl"></FcGoogle>
-                <p>Sign Up Google</p>
-            </button>
+          <div className="h-full max-lg:mt-12">
+            <img src="https://readymadeui.com/login-image.webp" className="w-full h-full object-cover" alt="Dining Experience" />
           </div>
-        </form>
+        </div>
       </div>
     </div>
   );
