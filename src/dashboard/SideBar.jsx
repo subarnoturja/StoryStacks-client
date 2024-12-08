@@ -3,18 +3,17 @@ import {
   MdOutlineLogout,
   MdOutlineManageHistory,
 } from "react-icons/md";
-import profilePicture from "../assets/profile.jpg";
+
 import { LuLayoutDashboard } from "react-icons/lu";
 import { FiUserCheck } from "react-icons/fi";
 import { AiOutlineProduct } from "react-icons/ai";
-import { IoSettingsOutline } from "react-icons/io5";
 import { Link } from "react-router-dom";
 import { useContext } from "react";
 import { AuthContext } from "../authProvider/AuthProvider";
 
 const Sidebar = () => {
 
-  const { userLogout } = useContext(AuthContext);
+  const { user, userLogout } = useContext(AuthContext);
 
   // Logout Handling
   const handleSignOut = () => {
@@ -31,15 +30,12 @@ const Sidebar = () => {
     <div className="h-full p-3 space-y-2 w-60 dark:bg-gray-50 dark:text-gray-800">
       <div className="flex items-center p-2 space-x-4">
         <img
-          src={profilePicture}
+          src={user?.photoURL}
           alt=""
           className="w-12 h-12 rounded-full dark:bg-gray-500"
         />
         <div>
-          <h2 className="text-lg font-semibold">Leroy Jenkins</h2>
-          <span className="flex items-center space-x-1">
-            <p className="text-xs hover:underline dark:text-gray-600">Admin</p>
-          </span>
+          <h2 className="text-lg font-semibold">{user?.displayName}</h2>
         </div>
       </div>
       <div className="divide-y dark:divide-gray-300">

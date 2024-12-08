@@ -23,7 +23,7 @@ export const router = createBrowserRouter([
             },
             {
                 path: '/book/:id',
-                element: <SingleBook></SingleBook>,
+                element: <PrivateRoute><SingleBook></SingleBook></PrivateRoute>,
                 loader: ({ params }) => fetch(`http://localhost:5000/book/${params.id}`)
             },
             {
@@ -50,15 +50,15 @@ export const router = createBrowserRouter([
             },
             {
                 path: '/admin/dashboard/upload',
-                element: <UploadBook></UploadBook>,
+                element: <PrivateRoute><UploadBook></UploadBook></PrivateRoute>,
             },
             {
                 path: '/admin/dashboard/manage',
-                element: <ManageBooks></ManageBooks>,
+                element: <PrivateRoute><ManageBooks></ManageBooks></PrivateRoute>,
             },
             {
                 path: '/admin/dashboard/edit-books/:id',
-                element: <EditBooks></EditBooks>,
+                element: <PrivateRoute><EditBooks></EditBooks></PrivateRoute>,
                 loader: ({ params }) => fetch(`http://localhost:5000/book/${params.id}`)
             },
         ]
