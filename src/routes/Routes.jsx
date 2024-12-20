@@ -24,7 +24,7 @@ export const router = createBrowserRouter([
             {
                 path: '/book/:id',
                 element: <PrivateRoute><SingleBook></SingleBook></PrivateRoute>,
-                loader: ({ params }) => fetch(`http://localhost:5000/book/${params.id}`)
+                loader: ({ params }) => fetch(`https://story-stacks-server.vercel.app/book/${params.id}`)
             },
             {
                 path: '/shop',
@@ -59,7 +59,7 @@ export const router = createBrowserRouter([
             {
                 path: '/admin/dashboard/edit-books/:id',
                 element: <PrivateRoute><EditBooks></EditBooks></PrivateRoute>,
-                loader: ({ params }) => fetch(`http://localhost:5000/book/${params.id}`)
+                loader: ({ params }) => fetch(`https://story-stacks-server.vercel.app/book/${params.id}`)
             },
         ]
     }
